@@ -1,0 +1,174 @@
+/* ========================================
+   BASE — Custom Properties, Resets & Typography
+   ======================================== */
+
+/* --- Custom Properties --- */
+:root {
+  --green: #2f4841;
+  --dark: #233631;
+  --sage: #a6b5a9;
+  --paper: #fafaf7;
+  --ink: #202322;
+  --line: #cbd4ce;
+  --purple: #5c456f;
+  --amber: #f1cf78;
+  --blue: #315d76;
+
+  /* UI enhancements */
+  --transition: 0.2s ease;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+  --radius: 12px;
+}
+
+/* --- Box-sizing Reset --- */
+* {
+  box-sizing: border-box;
+}
+
+/* --- Body --- */
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 17px / 1.6 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- Form Element Resets --- */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+/* --- Global Button Styles --- */
+button {
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--green);
+  border-radius: 9px;
+  padding: 11px 17px;
+  font-weight: 700;
+  transition: all var(--transition);
+}
+
+button:hover {
+  border-color: var(--green);
+  background: #edf0ee;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+
+/* --- Focus-Visible Styles --- */
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 4px;
+}
+
+/* --- Link Styles --- */
+a {
+  color: var(--blue);
+  transition: color var(--transition);
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3 {
+  color: var(--green);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(38px, 6vw, 72px);
+  margin: 15px 0 20px;
+}
+
+h2 {
+  font-size: 32px;
+  margin: 14px 0 22px;
+}
+
+h3 {
+  font-size: 22px;
+  margin: 10px 0 14px;
+}
+
+p {
+  margin: 12px 0 20px;
+}
+
+/* --- Utility Classes --- */
+.eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purple);
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--purple);
+}
+
+.pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: #e9e3ed;
+  color: #503960;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background var(--transition);
+}
+
+.muted {
+  font-size: 14px;
+  color: #526057;
+}
+
+.danger {
+  color: #8a2929;
+}
+
+.empty {
+  padding: 40px;
+  text-align: center;
+}
+
+.spaced {
+  margin-top: 30px;
+}
+
+/* --- Skip Link (Accessibility) --- */
+.skip {
+  position: absolute;
+  top: -100px;
+  left: 10px;
+}
+
+.skip:focus {
+  top: 10px;
+  background: white;
+  padding: 10px;
+  z-index: 5;
+}

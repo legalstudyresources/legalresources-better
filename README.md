@@ -26,11 +26,35 @@ Based on QCAA Legal Studies General senior syllabus 2025 v1.3, Unit 3 Topic 1, a
 
 Written answers are **self-assessed**, not automatically marked. Models are suggested responses; alternative defensible answers are possible. Checklists describe features to look for and do not translate to an official mark. Quiz records show latest correctness; written and case records show completion, not demonstrated mastery. Practice XP is awarded once per completed item and is not an exam score.
 
-## Files and editing
+## Files and architecture
 
-`index.html`, `style.css`, `data.js` and `app.js` all live in this folder. No build, database, dependencies or API keys are required. Content is held in `BANK` in `data.js`; quiz answers use zero-based indexes. Options are shuffled at runtime. Add new items with unique IDs; maintain historical-case qualifications and source notes.
+No build step, bundler, database, dependencies, or API keys are required. The project runs directly in the browser and is fully compatible with GitHub Pages:
 
-This is a standalone game intended for its own repository. Put index.html, style.css, data.js and app.js in the repository root. Enable GitHub Pages using main and / (root). No existing EA game files need to be changed. The student URL above is the intended URL after the new repository is created and Pages is enabled; it is not yet verified live.
+- `index.html`: Main HTML entry point linking modular styles and scripts.
+- `data.js`: Content bank (`BANK`) containing 60 recall questions, 22 written practice prompts, 3 sequence pathways, and 2 eight-stage case files.
+- `css/`: Modular stylesheets:
+  - `base.css`: CSS custom properties, resets, typography, and utility classes.
+  - `layout.css`: Header, navigation, footer, grid layouts, and hero sections.
+  - `components.css`: Cards with hover lift, panels, buttons, forms, and tables.
+  - `quiz.css`: Rapid recall styling, options, letter badges, and animated progress bar.
+  - `writing.css`: Drafting textareas, timer, and self-assessment checklists.
+  - `cases.css`: Two-column case study layouts, source list, and plan summaries.
+  - `progress.css`: Local progress dashboard, score cards, and topic breakdown.
+  - `responsive.css`: Mobile breakpoints (760px, 480px) and print styles.
+- `js/`: Modular JavaScript logic:
+  - `state.js`: Global state management and localStorage persistence.
+  - `templates.js`: Shared template helpers (buttons, topic selectors, XP calculation).
+  - `home.js`: Case desk homepage view.
+  - `quiz.js`: Multiple-choice quiz setup, question runner, and repair queue.
+  - `writing.js`: Writing challenges, drafting, model answer reveal, and self-checking.
+  - `sequences.js`: Legislative and constitutional step-ordering drills.
+  - `cases.js`: Case studies, 8-stage analysis workflow, and plan exports.
+  - `progress.js`: Student progress tracking and performance breakdown.
+  - `sources.js`: Syllabus references and study advice.
+  - `router.js`: Navigation, event delegation, and action dispatcher.
+  - `app.js`: Application bootstrap (`navigate('home')`).
+
+Deploy by enabling GitHub Pages using the `main` branch and `/` (root) folder.
 
 ## Sources
 

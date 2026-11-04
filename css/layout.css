@@ -1,0 +1,151 @@
+/* ========================================
+   LAYOUT — Header, Nav, Main, Footer & Grids
+   ======================================== */
+
+/* --- Header --- */
+header {
+  max-width: 1200px;
+  margin: auto;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* --- Brand --- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--green);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  transition: opacity var(--transition);
+}
+
+.brand:hover {
+  opacity: 0.85;
+}
+
+.brand small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.brandmark {
+  font: 38px Georgia, serif;
+  background: var(--green);
+  color: white;
+  padding: 0 15px;
+  border-radius: 9px;
+  transition: background var(--transition);
+}
+
+.brand:hover .brandmark {
+  background: var(--dark);
+}
+
+/* --- Navigation --- */
+nav {
+  display: flex;
+  gap: 8px;
+}
+
+nav button {
+  font-size: 14px;
+  background: transparent;
+  border-color: transparent;
+  transition: all var(--transition);
+}
+
+nav button:hover {
+  background: #edf0ee;
+  border-color: var(--line);
+}
+
+nav button.active,
+nav button[aria-current="page"] {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+nav button.active:hover,
+nav button[aria-current="page"]:hover {
+  background: var(--dark);
+  color: white;
+  border-color: var(--dark);
+}
+
+/* --- Main Content --- */
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 42px 30px 60px;
+  min-height: 75vh;
+}
+
+/* --- Footer --- */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 22px 30px;
+  max-width: 1200px;
+  margin: auto;
+  color: var(--green);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* --- Hero Section --- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 38px;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.hero p {
+  max-width: 590px;
+}
+
+/* --- Docket --- */
+.docket {
+  background: #e0e5e1;
+  border-top: 8px solid var(--green);
+  border-radius: 5px 5px 12px 12px;
+  padding: 27px;
+  box-shadow: 9px 9px 0 #eee5d5;
+}
+
+.docket h2 {
+  font-size: 25px;
+}
+
+.docket ol {
+  padding-left: 24px;
+}
+
+.docket li {
+  margin: 12px 0;
+}
+
+/* --- Grid Layout --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* --- Narrow Container --- */
+.narrow {
+  max-width: 820px;
+  margin: auto;
+}

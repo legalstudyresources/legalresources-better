@@ -1,0 +1,158 @@
+/* ========================================
+   RESPONSIVE — Mobile & Print Overrides
+   ======================================== */
+
+/* --- Tablet / Small Screen --- */
+@media (max-width: 760px) {
+  header {
+    padding: 16px;
+    display: block;
+  }
+
+  .brand {
+    margin-bottom: 15px;
+  }
+
+  nav {
+    justify-content: space-between;
+  }
+
+  nav button {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  main {
+    padding: 25px 18px 40px;
+  }
+
+  .hero,
+  .grid,
+  .case-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    gap: 18px;
+  }
+
+  .docket {
+    padding: 20px;
+  }
+
+  .card,
+  .panel {
+    padding: 20px;
+  }
+
+  /* Disable hover lifts on touch devices */
+  .card:hover {
+    transform: none;
+  }
+
+  .question {
+    font-size: 22px;
+  }
+
+  .source-list {
+    max-height: none;
+  }
+
+  .case-layout aside {
+    order: 0;
+  }
+
+  footer {
+    display: block;
+    padding: 20px;
+  }
+
+  footer span {
+    display: block;
+  }
+
+  .toolbar {
+    align-items: flex-start;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .steprow {
+    gap: 6px;
+  }
+
+  .steprow button {
+    padding: 8px;
+  }
+
+  .stat {
+    padding: 15px;
+  }
+}
+
+/* --- Very Small Screens --- */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .question {
+    font-size: 19px;
+  }
+
+  .stats {
+    flex-direction: column;
+  }
+
+  .stat {
+    min-width: unset;
+  }
+
+  .option {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .brandmark {
+    font-size: 30px;
+    padding: 0 10px;
+  }
+}
+
+/* --- Print Styles --- */
+@media print {
+  header,
+  footer,
+  button,
+  .toolbar {
+    display: none;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+  }
+
+  .panel {
+    break-inside: avoid;
+  }
+
+  .case-layout {
+    display: block;
+  }
+
+  textarea {
+    border: 0;
+  }
+
+  .source-list {
+    max-height: none;
+    overflow: visible;
+  }
+}
