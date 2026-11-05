@@ -48,7 +48,8 @@ a {
 }
 
 /* --- Global Button Styles --- */
-button {
+button,
+a.button {
   cursor: pointer;
   border: 1px solid var(--line);
   background: white;
@@ -56,12 +57,18 @@ button {
   border-radius: 9px;
   padding: 11px 17px;
   font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: all var(--transition);
 }
 
-button:hover {
+button:hover,
+a.button:hover {
   border-color: var(--green);
   background: #edf0ee;
+  color: var(--green);
 }
 
 button:disabled {

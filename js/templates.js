@@ -6,10 +6,12 @@
 const button = (label, action, cls = 'primary') =>
   `<button class="${cls}" data-action="${action}">${label}</button>`;
 
-const topicOptions = () =>
-  ['All topics', ...new Set(BANK.quiz.map(q => q.topic))]
+const topicOptions = (items) => {
+  const list = items || (window.BANK?.quiz) || (window.BANK?.writing) || [];
+  return ['All topics', ...new Set(list.map(q => q.topic))]
     .map(t => `<option>${esc(t)}</option>`)
     .join('');
+};
 
 const earned = () =>
   Object.values(state.quiz).filter(v => v.correct).length * 10 +

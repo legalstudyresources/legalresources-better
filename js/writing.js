@@ -1,5 +1,5 @@
 /**
- * writing.js — All writing challenge functionality.
+ * writing.js — All writing challenge functionality for writing.html.
  * Provides: writingSetup, startWrite, persistWrite, revealWrite, saveWrite, startTimer
  */
 
@@ -11,7 +11,7 @@ function writingSetup() {
       <p>Use full sentences. You can type or write in your notebook. The model and checklists guide your own judgement; the game does not award exam marks.</p>
       <div class="toolbar">
         <label>Topic
-          <select id="writeTopic">${topicOptions()}</select>
+          <select id="writeTopic">${topicOptions(BANK.writing)}</select>
         </label>
         ${button('Give me a challenge', 'randomWrite')}
       </div>
@@ -32,6 +32,8 @@ function writingSetup() {
 
 function startWrite(i) {
   const q = BANK.writing[i];
+  if (!q) return writingSetup();
+
   const saved = state.written[q.id] || state.drafts[q.id];
 
   written = {
@@ -146,7 +148,7 @@ function saveWrite() {
       </div>
       <div class="toolbar">
         ${button('Another challenge', 'writingSetup')}
-        ${button('My progress', 'progress', '')}
+        <a href="progress.html" class="button">My progress</a>
       </div>
     </div>
   `);
@@ -169,4 +171,56 @@ function startTimer() {
       : 'Time to check — finish your sentence.';
     if (remaining <= 0) clearInterval(timer);
   }, 1000);
+}
+
+// Action dispatcher and event listener for writing page
+const writingActions = {
+  writingSetup,
+  randomWrite: () => {
+    const topicVal = $('#writeTopic')?.value || 'All topics';
+    let pool = BANK.writing
+      .map((w, i) => ({ w, i }))
+      .filter(({ w }) => topicVal === 'All topics' || w.topic === topicVal);
+    if (pool.length) {
+      startWrite(shuffle(pool)[0].i);
+    }
+  },
+  revealWrite,
+  saveWrite,
+  timer: startTimer
+};
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+
+  if (btn.dataset.action && writingActions[btn.dataset.action]) {
+    writingActions[btn.dataset.action]();
+    return;
+  }
+
+  if (btn.dataset.write !== undefined) {
+    const i = Number(btn.dataset.write);
+    startWrite(i);
+    if (state.drafts?.[BANK.writing[i].id] && !state.written[BANK.writing[i].id]) {
+      $('#draft').value = state.drafts[BANK.writing[i].id].draft;
+      written.draft = $('#draft').value;
+    }
+  }
+});
+
+// Auto-start or initialize based on URL params
+const writeParams = new URLSearchParams(window.location.search);
+if (writeParams.get('index') !== null) {
+  startWrite(Number(writeParams.get('index')));
+} else if (writeParams.get('id') !== null) {
+  const targetId = writeParams.get('id');
+  const foundIdx = BANK.writing.findIndex(w => w.id === targetId);
+  if (foundIdx >= 0) {
+    startWrite(foundIdx);
+  } else {
+    writingSetup();
+  }
+} else {
+  writingSetup();
 }

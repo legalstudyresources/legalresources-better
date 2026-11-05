@@ -28,31 +28,40 @@ Written answers are **self-assessed**, not automatically marked. Models are sugg
 
 ## Files and architecture
 
-No build step, bundler, database, dependencies, or API keys are required. The project runs directly in the browser and is fully compatible with GitHub Pages:
+No build step, bundler, database, dependencies, or API keys are required. The project runs directly in any browser and is 100% compatible with GitHub Pages:
 
-- `index.html`: Main HTML entry point linking modular styles and scripts.
-- `data.js`: Content bank (`BANK`) containing 60 recall questions, 22 written practice prompts, 3 sequence pathways, and 2 eight-stage case files.
-- `css/`: Modular stylesheets:
-  - `base.css`: CSS custom properties, resets, typography, and utility classes.
-  - `layout.css`: Header, navigation, footer, grid layouts, and hero sections.
-  - `components.css`: Cards with hover lift, panels, buttons, forms, and tables.
-  - `quiz.css`: Rapid recall styling, options, letter badges, and animated progress bar.
-  - `writing.css`: Drafting textareas, timer, and self-assessment checklists.
-  - `cases.css`: Two-column case study layouts, source list, and plan summaries.
-  - `progress.css`: Local progress dashboard, score cards, and topic breakdown.
-  - `responsive.css`: Mobile breakpoints (760px, 480px) and print styles.
-- `js/`: Modular JavaScript logic:
-  - `state.js`: Global state management and localStorage persistence.
-  - `templates.js`: Shared template helpers (buttons, topic selectors, XP calculation).
-  - `home.js`: Case desk homepage view.
-  - `quiz.js`: Multiple-choice quiz setup, question runner, and repair queue.
-  - `writing.js`: Writing challenges, drafting, model answer reveal, and self-checking.
-  - `sequences.js`: Legislative and constitutional step-ordering drills.
-  - `cases.js`: Case studies, 8-stage analysis workflow, and plan exports.
-  - `progress.js`: Student progress tracking and performance breakdown.
-  - `sources.js`: Syllabus references and study advice.
-  - `router.js`: Navigation, event delegation, and action dispatcher.
-  - `app.js`: Application bootstrap (`navigate('home')`).
+### Pages (Separate HTML)
+- `index.html`: Case desk home dashboard (displays live practice XP and direct links to activities).
+- `quiz.html`: Rapid recall quiz page (topic filters, round lengths, live feedback, and repair queues).
+- `writing.html`: Written practice page (retrieval drafting, 5-minute timer, model answers, and checklist self-checks).
+- `sequences.html`: Legal processes ordering page (Qld Bill, Constitutional Alteration, Legal Reasoning pathways).
+- `cases.html`: Fictional case studies and 8-stage extended response plan builder.
+- `progress.html`: Device-local practice records, topic breakdown table, and links to saved writing.
+- `sources.html`: Study guidance, verified syllabus references, and privacy notes.
+
+### Data (Modular Banks in `data/`)
+Each activity has its own dedicated data file so content can be edited without wading through other sections:
+- `data/quiz.js`: 60 multiple-choice questions across 5 syllabus topics.
+- `data/writing.js`: 22 written challenge prompts, suggested model responses, and checklists.
+- `data/sequences.js`: 3 legislative, constitutional, and reasoning sequence pathways.
+- `data/cases.js`: 2 eight-stage fictional case studies with 6 simulated source documents each.
+- `data.js`: Unified fallback file in root aggregating all banks for backwards compatibility.
+
+### Dark Mode
+- Built-in accessible dark theme with automatic system preference detection (`prefers-color-scheme: dark`) and manual toggle (🌙 / ☀️).
+- Remembers user preference in `localStorage`.
+- Includes an anti-flicker script in `<head>` of every page to eliminate theme flashes on navigation.
+
+### Stylesheets (`css/`)
+- `base.css`: CSS custom properties, resets, typography, and utility classes.
+- `layout.css`: Header, navigation, footer, grid layouts, and hero sections.
+- `components.css`: Cards with hover lift, panels, buttons, forms, and tables.
+- `quiz.css`: Rapid recall styling, options, letter badges, and animated progress bar.
+- `writing.css`: Drafting textareas, timer, and self-assessment checklists.
+- `cases.css`: Two-column case study layouts, source list, and plan summaries.
+- `progress.css`: Local progress dashboard, score cards, and topic breakdown.
+- `responsive.css`: Mobile breakpoints (760px, 480px) and print styles.
+- `dark.css`: Dark mode color palettes, border overrides, and contrast adjustments.
 
 Deploy by enabling GitHub Pages using the `main` branch and `/` (root) folder.
 

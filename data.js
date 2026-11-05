@@ -1,4 +1,6 @@
-const BANK = {
+window.BANK = window.BANK || {};
+const BANK = window.BANK;
+Object.assign(BANK, {
   "quiz": [
     {
       "id": "q1",
@@ -1317,4 +1319,4 @@ const BANK = {
       ]
     }
   ]
-};
+});

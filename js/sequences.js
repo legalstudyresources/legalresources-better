@@ -1,5 +1,5 @@
 /**
- * sequences.js — Sequence / ordering drill functionality.
+ * sequences.js — Sequence / ordering drill functionality for sequences.html.
  * Provides: sequences, startSequence, renderSequence, checkSequence
  */
 
@@ -85,3 +85,37 @@ function checkSequence() {
     );
   }
 }
+
+// Action dispatcher and event listener for sequences page
+const sequenceActions = {
+  sequences,
+  checkSequence
+};
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+
+  if (btn.dataset.action && sequenceActions[btn.dataset.action]) {
+    sequenceActions[btn.dataset.action]();
+    return;
+  }
+
+  if (btn.dataset.sequence !== undefined) {
+    startSequence(Number(btn.dataset.sequence));
+    return;
+  }
+
+  if (btn.dataset.move) {
+    const [i, delta] = btn.dataset.move.split(',').map(Number);
+    const j = i + delta;
+    if (j >= 0 && j < sequence.order.length) {
+      [sequence.order[i], sequence.order[j]] = [sequence.order[j], sequence.order[i]];
+      renderSequence();
+      document.querySelector(`[data-move="${j},${delta}"]`)?.focus();
+    }
+  }
+});
+
+// Initialize on page load
+sequences();

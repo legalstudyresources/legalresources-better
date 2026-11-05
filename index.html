@@ -6,23 +6,33 @@
   <meta name="theme-color" content="#2F4841">
   <meta name="description"
         content="Governance knowledge, written practice and fictional source challenges for Queensland Legal Studies IA1.">
-  <title>IA1 Casefile | Mrs Knox Teaches</title>
+  <title>Case Desk | IA1 Casefile — Mrs Knox Teaches</title>
+
+  <!-- Prevent dark mode theme flash -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('mkt-theme-v1');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/quiz.css">
-  <link rel="stylesheet" href="css/writing.css">
-  <link rel="stylesheet" href="css/cases.css">
-  <link rel="stylesheet" href="css/progress.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dark.css">
 </head>
 <body>
   <a class="skip" href="#app">Skip to activity</a>
 
   <header>
-    <a class="brand" href="#home" aria-label="IA1 Casefile home">
+    <a class="brand" href="index.html" aria-label="IA1 Casefile home">
       <span class="brandmark" aria-hidden="true">§</span>
       <span>
         MRS KNOX TEACHES
@@ -30,9 +40,12 @@
       </span>
     </a>
     <nav aria-label="Main navigation">
-      <button data-nav="home">Case desk</button>
-      <button data-nav="progress">My progress</button>
-      <button data-nav="sources">Help &amp; sources</button>
+      <a href="index.html" class="nav-link active" aria-current="page">Case desk</a>
+      <a href="progress.html" class="nav-link">My progress</a>
+      <a href="sources.html" class="nav-link">Help &amp; sources</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon" aria-hidden="true">🌙</span>
+      </button>
     </nav>
   </header>
 
@@ -43,20 +56,17 @@
     <span>Independent classroom practice · Not an official QCAA product</span>
   </footer>
 
-  <!-- Data -->
-  <script src="data.js"></script>
+  <!-- Modular Data (Index needs counts from all banks) -->
+  <script src="data/quiz.js"></script>
+  <script src="data/writing.js"></script>
+  <script src="data/sequences.js"></script>
+  <script src="data/cases.js"></script>
 
-  <!-- Application scripts -->
+  <!-- Page Scripts -->
+  <script src="js/theme.js"></script>
   <script src="js/state.js"></script>
   <script src="js/templates.js"></script>
   <script src="js/home.js"></script>
-  <script src="js/quiz.js"></script>
-  <script src="js/writing.js"></script>
-  <script src="js/sequences.js"></script>
-  <script src="js/cases.js"></script>
-  <script src="js/progress.js"></script>
-  <script src="js/sources.js"></script>
-  <script src="js/router.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

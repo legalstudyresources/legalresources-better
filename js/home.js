@@ -1,5 +1,5 @@
 /**
- * home.js — Home page renderer.
+ * home.js — Home page renderer for index.html.
  * Provides: home
  */
 
@@ -23,7 +23,7 @@ function home() {
           <li>Write: one short response without notes.</li>
           <li>Check the model and repair one weak sentence.</li>
         </ol>
-        ${button('Start a mixed round', 'quick')}
+        <a href="quiz.html?quick=1" class="button primary">Start a mixed round</a>
       </aside>
     </section>
 
@@ -32,28 +32,28 @@ function home() {
         <span class="tag">01 / Comprehending</span>
         <h2>Rapid recall</h2>
         <p>${BANK.quiz.length} questions on governance, constitutional powers, Parliament, courts, cases and legal reasoning. Incorrect answers return in your repair queue.</p>
-        ${button('Choose a recall round', 'quizSetup')}
+        <a href="quiz.html" class="button primary">Choose a recall round</a>
       </article>
 
       <article class="card purple">
         <span class="tag">02 / Written practice</span>
         <h2>Write → check → repair</h2>
         <p>${BANK.writing.length} direct writing challenges. Write first, compare with a suggested answer, then improve your reasoning.</p>
-        ${button('Choose a writing challenge', 'writingSetup')}
+        <a href="writing.html" class="button primary">Choose a writing challenge</a>
       </article>
 
       <article class="card blue">
         <span class="tag">03 / Legal processes</span>
         <h2>Put it in order</h2>
         <p>Rebuild the Queensland legislative process, constitutional alteration pathway and a legal reasoning pathway.</p>
-        ${button('Open process drills', 'sequences')}
+        <a href="sequences.html" class="button primary">Open process drills</a>
       </article>
 
       <article class="card amber">
         <span class="tag">04 / Analysing &amp; evaluating</span>
         <h2>Crack a case file</h2>
         <p>Two fictional governance disputes. Read six sources, test the evidence and build your own justified recommendation across eight stages.</p>
-        ${button('Choose a case file', 'cases')}
+        <a href="cases.html" class="button primary">Choose a case file</a>
       </article>
     </div>
 

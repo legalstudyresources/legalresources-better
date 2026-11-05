@@ -1,10 +1,13 @@
 /**
- * progress.js — Progress / stats page.
+ * progress.js — Progress / stats page for progress.html.
  * Provides: progress
  */
 
 function progress() {
-  const attempted = BANK.quiz.filter(q => state.quiz[q.id]);
+  const quizBank = window.BANK?.quiz || [];
+  const writingBank = window.BANK?.writing || [];
+
+  const attempted = quizBank.filter(q => state.quiz[q.id]);
   const correct = attempted.filter(q => state.quiz[q.id].correct);
   const completedW = Object.values(state.written).filter(w => w.done).length;
   const completedC = Object.values(state.cases).reduce(
@@ -12,8 +15,8 @@ function progress() {
     0
   );
 
-  const topicRows = [...new Set(BANK.quiz.map(q => q.topic))].map(t => {
-    const bank = BANK.quiz.filter(q => q.topic === t);
+  const topicRows = [...new Set(quizBank.map(q => q.topic))].map(t => {
+    const bank = quizBank.filter(q => q.topic === t);
     const tried = bank.filter(q => state.quiz[q.id]);
     return `<tr>` +
       `<td>${esc(t)}</td>` +
@@ -22,10 +25,10 @@ function progress() {
     `</tr>`;
   }).join('');
 
-  const writtenLinks = BANK.writing
+  const writtenLinks = writingBank
     .filter(w => state.written[w.id]?.done || state.drafts?.[w.id])
     .map(w =>
-      `<p><button data-write="${BANK.writing.indexOf(w)}">${esc(w.prompt)}</button></p>`
+      `<p><a href="writing.html?index=${writingBank.indexOf(w)}" class="button">${esc(w.prompt)}</a></p>`
     )
     .join('') || '<p>Your written challenges will appear here after you start one.</p>';
 
@@ -35,11 +38,11 @@ function progress() {
 
     <div class="stats">
       <div class="stat">
-        <strong>${correct.length}/${BANK.quiz.length}</strong>
+        <strong>${correct.length}/${quizBank.length}</strong>
         Latest recall answers correct
       </div>
       <div class="stat">
-        <strong>${completedW}/${BANK.writing.length}</strong>
+        <strong>${completedW}/${writingBank.length}</strong>
         Written challenges repaired
       </div>
       <div class="stat">
@@ -62,7 +65,7 @@ function progress() {
         </thead>
         <tbody>${topicRows}</tbody>
       </table>
-      ${button('Repair missed knowledge', 'retryProgress')}
+      <a href="quiz.html?retry=1" class="button primary">Repair missed knowledge</a>
     </div>
 
     <div class="panel">
@@ -81,3 +84,19 @@ function progress() {
     </details>
   `);
 }
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+
+  if (btn.dataset.action === 'reset') {
+    if ($('#resetAgree')?.checked) {
+      state = fresh();
+      save();
+      progress();
+    }
+  }
+});
+
+// Initialize on page load
+progress();

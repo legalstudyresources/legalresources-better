@@ -1,4 +1,4 @@
 /**
- * app.js — Entry point. Starts the application.
+ * app.js — Entry point for index.html.
  */
-navigate('home');
+home();

@@ -1,5 +1,5 @@
 /**
- * sources.js — Help & sources page.
+ * sources.js — Help & sources page for sources.html.
  * Provides: sources
  */
 
@@ -20,19 +20,19 @@ function sources() {
       <p class="muted">Content checked 16 October 2026. Legal propositions are classroom summaries, not quotations. Fictional case packs use invented rules and data. No school assessment files are included.</p>
 
       <ul class="source-links">
-        <li><a href="https://www.qcaa.qld.edu.au/downloads/senior-qce/syllabuses/snr_legal_25_syll.pdf">QCAA Legal Studies 2025 v1.3 syllabus</a> — Unit 3 Topic 1 and IA1.</li>
-        <li><a href="https://www.legislation.gov.au/C2004Q00685/latest">Australian Constitution</a> — powers, inconsistency, deadlocks and alteration.</li>
-        <li><a href="https://www.parliament.qld.gov.au/documents/explore/education/factsheets/Factsheet_3.7_MakingOfALaw.pdf">Queensland Parliament: making a law</a>.</li>
-        <li><a href="https://peo.gov.au/understand-our-parliament/how-parliament-works/system-of-government/separation-of-powers-parliament-executive-and-judiciary">Parliamentary Education Office: separation of powers</a>.</li>
-        <li><a href="https://www.art.gov.au/about-us">Administrative Review Tribunal: role</a>.</li>
-        <li><a href="https://www.courts.qld.gov.au/the-courts/magistrates-court/court-programs/murri-court">Queensland Courts: Murri Court</a>.</li>
-        <li><a href="https://www.courts.qld.gov.au/the-courts/childrens-court">Queensland Courts: Childrens Court</a>.</li>
-        <li><a href="https://www.fcfcoa.gov.au/fl">Federal Circuit and Family Court: family law</a>.</li>
-        <li><a href="https://www.hcourt.gov.au/about/overview-high-court/role-high-court">High Court: role and appeals</a>.</li>
-        <li><a href="https://aiatsis.gov.au/ntpd-resource/742">AIATSIS: Mabo (No. 2)</a>.</li>
-        <li><a href="https://www.hcourt.gov.au/sites/default/files/assets/publications/judgment-summaries/2012/hcasum16_2012_04_20_iiNet.pdf">High Court: Roadshow Films v iiNet (2012)</a>.</li>
-        <li><a href="https://www.refworld.org/jurisprudence/caselaw/ausfc/2002/18813">Federal Court: Al Masri (2002), via Refworld</a>. Historical authority; later decisions must be acknowledged.</li>
-        <li><a href="https://www.hcourt.gov.au/cases-and-judgments/judgments/judgments-1998-current/nzyq-v-minister-immigration-citizenship-and-multicultural-affairs">High Court: NZYQ (2023)</a> — subsequent constitutional development.</li>
+        <li><a href="https://www.qcaa.qld.edu.au/downloads/senior-qce/syllabuses/snr_legal_25_syll.pdf" target="_blank" rel="noopener">QCAA Legal Studies 2025 v1.3 syllabus</a> — Unit 3 Topic 1 and IA1.</li>
+        <li><a href="https://www.legislation.gov.au/C2004Q00685/latest" target="_blank" rel="noopener">Australian Constitution</a> — powers, inconsistency, deadlocks and alteration.</li>
+        <li><a href="https://www.parliament.qld.gov.au/documents/explore/education/factsheets/Factsheet_3.7_MakingOfALaw.pdf" target="_blank" rel="noopener">Queensland Parliament: making a law</a>.</li>
+        <li><a href="https://peo.gov.au/understand-our-parliament/how-parliament-works/system-of-government/separation-of-powers-parliament-executive-and-judiciary" target="_blank" rel="noopener">Parliamentary Education Office: separation of powers</a>.</li>
+        <li><a href="https://www.art.gov.au/about-us" target="_blank" rel="noopener">Administrative Review Tribunal: role</a>.</li>
+        <li><a href="https://www.courts.qld.gov.au/the-courts/magistrates-court/court-programs/murri-court" target="_blank" rel="noopener">Queensland Courts: Murri Court</a>.</li>
+        <li><a href="https://www.courts.qld.gov.au/the-courts/childrens-court" target="_blank" rel="noopener">Queensland Courts: Childrens Court</a>.</li>
+        <li><a href="https://www.fcfcoa.gov.au/fl" target="_blank" rel="noopener">Federal Circuit and Family Court: family law</a>.</li>
+        <li><a href="https://www.hcourt.gov.au/about/overview-high-court/role-high-court" target="_blank" rel="noopener">High Court: role and appeals</a>.</li>
+        <li><a href="https://aiatsis.gov.au/ntpd-resource/742" target="_blank" rel="noopener">AIATSIS: Mabo (No. 2)</a>.</li>
+        <li><a href="https://www.hcourt.gov.au/sites/default/files/assets/publications/judgment-summaries/2012/hcasum16_2012_04_20_iiNet.pdf" target="_blank" rel="noopener">High Court: Roadshow Films v iiNet (2012)</a>.</li>
+        <li><a href="https://www.refworld.org/jurisprudence/caselaw/ausfc/2002/18813" target="_blank" rel="noopener">Federal Court: Al Masri (2002), via Refworld</a>. Historical authority; later decisions must be acknowledged.</li>
+        <li><a href="https://www.hcourt.gov.au/cases-and-judgments/judgments/judgments-1998-current/nzyq-v-minister-immigration-citizenship-and-multicultural-affairs" target="_blank" rel="noopener">High Court: NZYQ (2023)</a> — subsequent constitutional development.</li>
       </ul>
 
       <div class="note">
@@ -42,3 +42,6 @@ function sources() {
     </div>
   `);
 }
+
+// Initialize on page load
+sources();

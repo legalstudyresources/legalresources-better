@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2F4841">
+  <meta name="description"
+        content="Study guidance, legal source notes and syllabus verification for Queensland Legal Studies IA1.">
+  <title>Help &amp; Sources | IA1 Casefile — Mrs Knox Teaches</title>
+
+  <!-- Prevent dark mode theme flash -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('mkt-theme-v1');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/cases.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/dark.css">
+</head>
+<body>
+  <a class="skip" href="#app">Skip to activity</a>
+
+  <header>
+    <a class="brand" href="index.html" aria-label="IA1 Casefile home">
+      <span class="brandmark" aria-hidden="true">§</span>
+      <span>
+        MRS KNOX TEACHES
+        <small>LEGAL STUDIES / UNIT 3</small>
+      </span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html" class="nav-link">Case desk</a>
+      <a href="progress.html" class="nav-link">My progress</a>
+      <a href="sources.html" class="nav-link active" aria-current="page">Help &amp; sources</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon" aria-hidden="true">🌙</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer>
+    Created by Mrs Knox
+    <span>Independent classroom practice · Not an official QCAA product</span>
+  </footer>
+
+  <!-- Page Scripts -->
+  <script src="js/theme.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/templates.js"></script>
+  <script src="js/sources.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /**
- * cases.js — Case file functionality.
+ * cases.js — Case file functionality for cases.html.
  * Provides: cases, startCase, caseDraft, renderCase, revealCase, nextCase, caseText, caseSummary
  */
 
@@ -174,3 +174,38 @@ function caseSummary() {
     </div>
   `);
 }
+
+// Action dispatcher and event listener for cases page
+const caseActions = {
+  cases,
+  revealCase,
+  nextCase,
+  caseSummary,
+  returnCase: renderCase,
+  downloadPlan: () => {
+    const blob = new Blob([caseText()], { type: 'text/plain;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'IA1-Practice-Plan.txt';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  },
+  print: () => window.print()
+};
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+
+  if (btn.dataset.action && caseActions[btn.dataset.action]) {
+    caseActions[btn.dataset.action]();
+    return;
+  }
+
+  if (btn.dataset.case !== undefined) {
+    startCase(Number(btn.dataset.case));
+  }
+});
+
+// Initialize on page load
+cases();

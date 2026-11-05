@@ -1,5 +1,5 @@
 /**
- * quiz.js — All quiz / rapid-recall functionality.
+ * quiz.js — All quiz / rapid-recall functionality for quiz.html.
  * Provides: quizSetup, startQuiz, renderQuiz, answer, quizEnd
  */
 
@@ -151,10 +151,47 @@ function quizEnd() {
         ${repairList}
       </div>
       <div class="toolbar">
-        ${button('Write a response', 'writingSetup')}
+        <a href="writing.html" class="button primary">Write a response</a>
         ${button('Another round', 'quizSetup', '')}
-        ${button('My progress', 'progress', '')}
+        <a href="progress.html" class="button">My progress</a>
       </div>
     </div>
   `);
+}
+
+// Action dispatcher and event listener for quiz page
+const quizActions = {
+  quizSetup,
+  startQuiz: () => startQuiz(),
+  retry: () => startQuiz(true),
+  nextQuiz: () => {
+    if (session?.answered) {
+      session.index++;
+      renderQuiz();
+    }
+  }
+};
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+
+  if (btn.dataset.action && quizActions[btn.dataset.action]) {
+    quizActions[btn.dataset.action]();
+    return;
+  }
+
+  if (btn.dataset.answer !== undefined) {
+    answer(Number(btn.dataset.answer));
+  }
+});
+
+// Auto-start or initialize based on URL params
+const params = new URLSearchParams(window.location.search);
+if (params.get('quick') === '1') {
+  startQuiz(false, true);
+} else if (params.get('retry') === '1') {
+  startQuiz(true);
+} else {
+  quizSetup();
 }
